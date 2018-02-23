@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "793764631740",
+    "firebase_url": "https://fireapp-fb69d.firebaseio.com",
+    "project_id": "fireapp-fb69d",
+    "storage_bucket": "fireapp-fb69d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:793764631740:android:aaf30731391e8b13",
+        "android_client_info": {
+          "package_name": "com.example.imransk.firebaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "793764631740-b519bbom0sm0097rvanv8gvi2o8cb1rl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.imransk.firebaseapp",
+            "certificate_hash": "cf93257cb8ba63692f323129202f8ddaf8412413"
+          }
+        },
+        {
+          "client_id": "793764631740-h22a139onq0h3kuvlr1fmerb41qj9ul3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXZzftU688b8anjjwDS9-L04jba8vWh3I"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "793764631740-h22a139onq0h3kuvlr1fmerb41qj9ul3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

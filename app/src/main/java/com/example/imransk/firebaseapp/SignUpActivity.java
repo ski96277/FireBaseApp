@@ -1,7 +1,6 @@
 package com.example.imransk.firebaseapp;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,12 +14,8 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
-import java.util.Arrays;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class SignUpActivity extends AppCompatActivity implements View.OnClickListener {
     //defining view objects
     private EditText editTextEmail;
     private EditText editTextPassword;
@@ -52,6 +47,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (firebaseAuth != null) {
+            Toast.makeText(this, "hello", Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     public void onClick(View view) {
@@ -80,7 +82,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         progressDialog.setMessage("Registering Please Wait...");
         progressDialog.show();
-
         //creating a new user
         firebaseAuth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -89,10 +90,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         //checking if success
                         if (task.isSuccessful()) {
                             //display some message here
-                            Toast.makeText(MainActivity.this, "Successfully registered", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this, "Successfully registered", Toast.LENGTH_LONG).show();
                         } else {
                             //display some message here
-                            Toast.makeText(MainActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
+                            Toast.makeText(SignUpActivity.this, "Registration Error", Toast.LENGTH_LONG).show();
                         }
                         progressDialog.dismiss();
                     }

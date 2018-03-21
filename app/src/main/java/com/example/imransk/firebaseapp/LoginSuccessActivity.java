@@ -39,9 +39,15 @@ public class LoginSuccessActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+       /* NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        View headerView = navigationView.getHeaderView(0);*/
+
         mFirebaseAuth = FirebaseAuth.getInstance();
         mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
+//set default fragment when apps open
+        FragmentTransaction ft=getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.screenArea,new HomePageF());
+        ft.commit();
 
 
     }
@@ -82,14 +88,20 @@ public class LoginSuccessActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        Fragment fragment=null;
+        Fragment fragment = null;
         int id = item.getItemId();
 
-        if (id == R.id.nav_profile) {
+        if (id == R.id.nav_home_page) {
+            // Handle the camera action
+            Toast.makeText(this, "Click on home page", Toast.LENGTH_SHORT).show();
+            fragment = new HomePageF();
+        } else if (id == R.id.nav_profile) {
             // Handle the camera action
             Toast.makeText(this, "Click on profile", Toast.LENGTH_SHORT).show();
-            fragment=new UserProfile();
-        } else if (id == R.id.nav_gallery) {
+            fragment = new UserProfile();
+        } else if (id == R.id.nav_update_profile) {
+            fragment=new UpdateProfileF();
+            Toast.makeText(this, "Click on update profile", Toast.LENGTH_SHORT).show();
 
         } else if (id == R.id.nav_slideshow) {
 
@@ -98,9 +110,9 @@ public class LoginSuccessActivity extends AppCompatActivity
         } else if (id == R.id.nav_logOut) {
             mFirebaseAuth.signOut();
 
-            if (mFirebaseAuth.getCurrentUser()== null){
-                startActivity(new Intent(getApplicationContext(),LogInActivity.class));
-            }else {
+            if (mFirebaseAuth.getCurrentUser() == null) {
+                startActivity(new Intent(getApplicationContext(), LogInActivity.class));
+            } else {
                 Toast.makeText(this, "sorry can't sign Out", Toast.LENGTH_SHORT).show();
             }
 
@@ -111,10 +123,10 @@ public class LoginSuccessActivity extends AppCompatActivity
         }
 
         //skip the null pointer exception
-        if (fragment!=null){
-            FragmentManager fragmentManager=getSupportFragmentManager();
-            FragmentTransaction transaction=fragmentManager.beginTransaction();
-            transaction.replace(R.id.screenArea,fragment);
+        if (fragment != null) {
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction transaction = fragmentManager.beginTransaction();
+            transaction.replace(R.id.screenArea, fragment);
             transaction.commit();
         }
 

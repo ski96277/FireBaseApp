@@ -63,6 +63,13 @@
                 android:layout_weight="8"
                 android:hint="20 years"/>
         </LinearLayout>
+        <ImageView
+            android:id="@+id/image_view"
+            android:layout_width="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/user"
+            android:background="#000"
+            android:layout_height="150dp"/>
 
         <Button
             android:id="@+id/update_btn"
